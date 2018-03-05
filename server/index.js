@@ -1,25 +1,12 @@
 import express from 'express';
 import webpack from 'webpack';
 import { isDebug } from '../config/app';
-import { connect } from './db';
-import initPassport from './init/passport';
 import initExpress from './init/express';
 import initRoutes from './init/routes';
 import renderMiddleware from './render/middleware';
 
 const app = express();
 
-/*
- * Database-specific setup
- * - connect to MongoDB using mongoose
- * - register mongoose Schema
- */
-connect();
-
-/*
- * REMOVE if you do not need passport configuration
- */
-initPassport();
 
 if (isDebug) {
   // enable webpack hot module replacement

@@ -13,16 +13,8 @@ import { sessionId } from '../../config/secrets';
  * and pass it into the Router.run function.
  */
 export default function render(req, res) {
-  const authenticated = req.isAuthenticated();
   const history = createMemoryHistory();
-  const store = configureStore({
-    user: {
-      authenticated,
-      isWaiting: false,
-      message: '',
-      isLogin: true
-    }
-  }, history);
+  const store = configureStore({}, history);
   const routes = createRoutes(store);
 
   /*
